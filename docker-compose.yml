@@ -1,0 +1,52 @@
+services:
+  app1:
+    image: nginx
+    ports:
+      - "8881:80"
+    networks:
+      - webnet
+    volumes:
+      - /adhamdockers/html:/usr/share/nginx/html
+
+
+  app2:
+    image: nginx
+    ports:
+      - "8882:80"
+    networks:
+      - webnet
+    volumes:
+      - /adhamdockers/html:/usr/share/nginx/html
+
+
+  app3:
+    image: nginx
+    ports:
+      - "8883:80"
+    networks:
+      - webnet
+    volumes:
+      - /adhamdockers/html:/usr/share/nginx/html
+      
+networks:
+  webnet:
+    driver: bridge
+
+
+#######################################################
+services:
+  wepp:
+    image: nginx
+    ports:
+      - "8050:80"
+    deploy:
+      replicas: 3
+    networks:
+      - webnet
+    volumes:
+      - /adhamdockers/html:/usr/share/nginx/html
+
+
+networks:
+  webnet:
+    driver: bridge
